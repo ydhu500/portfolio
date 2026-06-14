@@ -1,0 +1,37 @@
+img{
+  max-width:5em;
+  height:auto;
+  border-radius: 50vh;
+  padding-left: 25em;
+  display: inline;
+}
+div{
+
+  border:1px solid black;
+  margin-top:1em;
+  padding:1em;
+  border-radius: 1em;
+  max-width: 40em;
+  background: rgb(89, 84, 84);
+  color:aliceblue
+}
+.contact{
+  display: flex;
+  flex-direction: column;
+  gap:1em;
+  max-width: 20em;
+
+ 
+  
+}
+.send-button{
+  background-color: rgb(35, 82, 220);
+  border-radius: 50vh;
+  max-width: 20em;
+  color: aliceblue;
+ align-self: center;
+}
+.profile{
+display: flex;
+flex-direction: column;
+}
