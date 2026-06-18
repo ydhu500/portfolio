@@ -7,21 +7,28 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="profile">
+  <button id="navbutton" class="send-button jsbutton">&#8942;</button>
+  <nav class="navbarjs">
+    <a href="#profile">profile</a>
+    <a href="#aboutme">About me</a>
+    <a href="#contact">contact</a>
+  </nav>
+  <div id="profile" class="profile">
+    <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LXNvbGlkaWNvbi13LTAwMi1wLnBuZw.png" alt="">
   <h3>K.S Yedhukrishnan</h3>
   
  "a btech second year student at geci"
- <img src="https://thumbs.dreamstime.com/b/user-profile-avatar-icon-134114292.jpg" alt="">
+ 
   </div>
  
- <div>
+ <div id="aboutme">
   <h3>About Me</h3> 
 
  <p>welcome to my portfolio I am currently learning web development languages like html,css and javascript.always I am enthudiastic  learning new things that's it</p> 
  </div>
 
 
-<div class="contact">
+<div id="contact" class="contact">
    <h3>Contact Me </h3> 
    <label for="text">Name:</label>
   <input type="text">
@@ -31,6 +38,6 @@
   <input type="text">
   <button class="send-button">send</button>
 </div>
-
+<script src="portfolio.js"></script>
 </body>
 </html>
