@@ -3,7 +3,7 @@ img{
   height:auto;
   border-radius: 50vh;
   display: inline;
-  background-color:green ;
+  background-color:transparent;
   mix-blend-mode:multiply;
 }
 div{
@@ -76,4 +76,11 @@ body{
   height:2.5em;
   padding:0;
   margin-bottom: 1em;
+}
+.popup:focus {
+ margin-left: 3em;
+transform: scale(1.05);
+transition: transform 0.5 ease;
+transition: margin-left 0.5 ease;
+border: 2px white solid;
 }
