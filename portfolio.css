@@ -108,7 +108,7 @@ transition: margin-left 0.5 ease;
   backdrop-filter: blur(10px);
   border-radius:0.5vh;
   height: fit-content;
-  padding: 1vh;
+  
   font-size: large;
 }
 .menubar{
