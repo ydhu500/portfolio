@@ -8,15 +8,18 @@ img{
 }
 .popup{
 
-  border:1px solid black;
-  margin-top:1em;
+  border:1px solid rgba(255, 255, 255, 0.3);
+  margin:3vh;
   padding:1em;
   border-radius: 1em;
   max-width: 40em;
-  background:linear-gradient(to right,blue,darkblue);
+  background:rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
   color:aliceblue;
   border: none;
   touch-action: manipulation;
+  font-size: small;
 }
 .contact{
   display: flex;
@@ -49,12 +52,16 @@ flex-direction: column;
 nav{
   display: none;
   flex-direction: column;
-  background: linear-gradient(to right,orange,red);
+  background:rgba(255, 255, 255, 0.2);
+   backdrop-filter: blur(10px);
   border: none;
 max-width:fit-content;
 border-radius:2vh;
 padding:2vh;
 padding-left: 4vh;
+margin:3vh;
+transition: all 0.5 ease;
+box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
 }
 nav a{
   text-decoration: none;
@@ -67,21 +74,48 @@ nav a:hover{
   transition:transform 0.3s ease;
 }
 body{
-  background-color:grey;
+  background-image: url('https://web-assets.bcg.com/dims4/default/6b18dc3/2147483647/strip/true/crop/980x1536+876+0/resize/273x428!/format/webp/quality/90/?url=http%3A%2F%2Fboston-consulting-group-brightspot.s3.amazonaws.com%2Fd0%2Fe5%2Faa836cdb4b938fe489d2b7e4db48%2Fwhy-b2b-software-firms-need-a-go-to-market-reset.jpg');
+  background-size:cover ;
 }
 #navbutton{
      background: linear-gradient(to right,orange,red);
      font-weight: bold;
        width: 1.5em;
        font-size: medium;
-  height:2.5em;
+  
   padding:0;
-  margin-bottom: 1em;
+ 
+  
 }
 .popup:focus {
- margin-left: 3em;
+
 transform: scale(1.05);
 transition: transform 0.5 ease;
 transition: margin-left 0.5 ease;
-border: 2px white solid;
+/* border: 2px white solid; */
+}
+@media (min-width:768px) {
+  .popup{
+    font-size: medium;
+     
+  }
+  font-size: small;
+ 
+  
+}
+#navbutton{
+ background:rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius:0.5vh;
+  height: fit-content;
+  padding: 1vh;
+  font-size: large;
+}
+.menubar{
+  display: flex;
+  float: row;
+ background:rgba(52, 45, 45, 0.359);
+ position: relative;
+   
+  
 }
