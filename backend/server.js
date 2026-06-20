@@ -1,48 +1,50 @@
 require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
+const cors = require('cors'); // 1. Import CORS
+
 const app = express();
 
-// Middleware to parse form data
+// 2. Give your GitHub Pages link permission to send data here
+app.use(cors({
+    origin: 'https://ydhu500.github.io'
+}));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Handle the form submission
-app.post('/send-email', (req, res) => {
-    const { name, email, message } = req.body;
-
-    // 1. Set up your email transporter (e.g., using Gmail)
-   const transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
     port: 465,
-    secure: true, // This forces a secure connection right from the start
+    secure: true, 
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
     }
 });
 
-    // 2. Define the email content
+app.post('/send-email', (req, res) => {
+    const { name, email, message } = req.body;
+
     const mailOptions = {
-        from: email,
-        to:process.env.EMAIL_USER, // Where you want to receive the message
-        subject: `New Contact Form Submission from ${name}`,
-        text: `You received a new message:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_USER, 
+        subject: `New Portfolio Message from ${name}`,
+        text: `You received a new message:\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
     };
 
-    // 3. Send the email
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.log(error);
-            res.status(500).send('Something went wrong.');
-        } else {
-            console.log('Email sent: ' + info.response);
-            res.send('Thank you! Your message has been sent.');
+            console.log("Nodemailer Error: ", error);
+            return res.status(500).send('Something went wrong.');
         }
+        console.log('Email sent: ' + info.response);
+        res.status(200).send('Thank you! Your message has been sent.');
     });
 });
 
-app.listen(3000, () => {
-    console.log('Server running on port 3000');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
