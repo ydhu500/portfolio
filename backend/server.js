@@ -12,13 +12,16 @@ app.post('/send-email', (req, res) => {
     const { name, email, message } = req.body;
 
     // 1. Set up your email transporter (e.g., using Gmail)
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user:process.env.EMAIL_USER, 
-            pass:process.env.EMAIL_PASS// Not your actual password, an App Password
-        }
-    });
+   const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // This forces a secure connection right from the start
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
 
     // 2. Define the email content
     const mailOptions = {
