@@ -1,18 +1,14 @@
 require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
-const cors = require('cors'); // 1. Import CORS
 
 const app = express();
 
-// 2. Give your GitHub Pages link permission to send data here
-app.use(cors({
-    origin: 'https://ydhu500.github.io'
-}));
-
+// This handles standard HTML form data submissions perfectly
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Secure cloud configuration for Gmail
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
@@ -29,18 +25,20 @@ app.post('/send-email', (req, res) => {
 
     const mailOptions = {
         from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER, 
+        to: process.env.EMAIL_USER, // Sends the message directly to your own inbox
         subject: `New Portfolio Message from ${name}`,
         text: `You received a new message:\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.log("Nodemailer Error: ", error);
-            return res.status(500).send('Something went wrong.');
+            console.log("Error sending email:", error);
+            // This sends a clear, clean message right back to the browser screen
+            return res.status(500).send('<h1>Oops! Something went wrong on the server side.</h1>');
         }
-        console.log('Email sent: ' + info.response);
-        res.status(200).send('Thank you! Your message has been sent.');
+        console.log('Email sent successfully: ' + info.response);
+        // Success screen!
+        res.status(200).send('<h1>Thank you! Your message has been sent successfully.</h1>');
     });
 });
 
