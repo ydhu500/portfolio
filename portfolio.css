@@ -36,9 +36,11 @@ img{
   max-width: 20em;
   height:auto;
   color: aliceblue;
- align-self: center;
+ 
  border: none;
  padding: 0.5em 1em;
+
+
 
 }
 .send-button:active{
@@ -118,4 +120,30 @@ transition: margin-left 0.5 ease;
  position: relative;
    
   
+}
+form input {
+  
+  border-radius: 5px;
+  min-width: 250px;
+ 
+}
+
+ label, textarea {
+  vertical-align: top;}
+ textarea {
+  width: 250pxq;
+  height: 50px;
+  border-radius: 5px;
+  resize: none;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: 5px;
+  flex: auto;
+}
+.button-container{
+  display: flex;
+  align-self: center;
 }

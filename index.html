@@ -53,13 +53,17 @@
 
   <div id="contact" class="contact popup" tabindex="0">
     <h3>Contact Me </h3> 
-    <label for="text">Name:</label>
-    <input type="text">
-    <label for="">Email:</label>
-    <input type="email">
-    <label for="">message:</label>
-    <input type="text">
-    <button class="send-button">send</button>
+    <form action="http://localhost:3000/send-email" method="post">
+      <label for="name" ">Name:</label>
+    <input type="text" name="name" placeholder="name" required><br>
+    <label for="email" >Email:</label>
+    <input type="email" name="email" placeholder="email" required><br>
+    <label for="message">Message:</label>
+    <textarea name="message" type="text" placeholder="message"></textarea><br>
+    <div class="button-container"><button type="submit" class="send-button">send</button></div>
+    
+    </form>
+    
   </div>
 </div>
 <script src="portfolio.js"></script>
